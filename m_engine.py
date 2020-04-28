@@ -1,7 +1,12 @@
+# 
+# Mongoengine är det paket som hanterar kopplingen till MongoDB 
 from mongoengine import *
 
+# Det här skapar en koppling till databasen 'systemet2' lokalt på din dator
 connect('systemet2')
 
+
+#Det här är en definition av hur ett dokument av typen Vara ser ut, jag har valt sju saker av de 30 som finns i filen
 class Vara(Document):
     nr= StringField()
     Artikelid = StringField()
@@ -12,9 +17,13 @@ class Vara(Document):
     Volymiml = StringField()
     PrisPerLiter = StringField()
 
+# det här monstret öppnar filen 'testfil.txt' sen läser den rad för rad och kollar först om artikelidt redan finns
+# i databasen, gör den inte det så skapar den ett nytt dokument i databasen och sparar det. Finns det redan ett dokument 
+# med samma artikelid så kollar den om priset i databasen är annat än det som är i textfilen, isf skriver den ut 
+# diffen i consolfönstret, sedan sparas det nya värdet i databasen. Ifall priset är samma som i databasen går den bara vidare till nästa rad.
 
 def load_file():
-    testdata = open('testfil.txt','r', encoding='utf-8', errors='ignore')
+    testdata = open('testfil.txt','r', encoding='utf-8', errors='ignore')  # här kan du ändra namnet på den fil du vill öppna just nu är det 'testfil.txt'
     for rad in testdata:
         radlista = rad.split('\t')
 

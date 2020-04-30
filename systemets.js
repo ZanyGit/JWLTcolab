@@ -19,7 +19,7 @@ const Vara = mongoose.model('Vara',varaSchema);
 const getItem = async () => {
   let res = await axios.get(url,{headers:{
     'Ocp-Apim-Subscription-Key':
-    'd47a74584689413da488540a0e1f2b27'}
+    dinApiNyckel}
   })
   let {ProductId, ProductNameBold,Price} = res.data
   console.log(`PruductId: ${ProductId} Name: ${ProductNameBold} Price: ${Price}`)

@@ -39,7 +39,7 @@ const getAllItems = async () => {
       }else{
         if(result){
           if(result.pris != element.Price){
-            console.log(`${result.namn}, prisförändring: ${element.Price - result.pris}kr ${((element.Price - result.pris)/result.pris).toFixed(2)}% (updated)`)
+            console.log(`${result.namn}, prisförändring: ${element.Price - result.pris}kr ${((element.Price - result.pris)/result.pris*100).toFixed(2)}% (updated)`)
             result.pris = element.Price
             await result.save()
           }
